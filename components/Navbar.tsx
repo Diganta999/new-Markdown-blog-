@@ -6,14 +6,14 @@ import { ModeToggle } from "./theme-toggle";
 const Navbar = () => {
   const navLinks = (
     <>
-      <li><Link className=" sm:text-white" href="/">Home</Link></li>
-      <li><Link className=" sm:text-white" href="/about">About</Link></li>
-      <li><Link className=" sm:text-white" href="/contact">Contact</Link></li>
+      <li><Link className=" sm:text-white px-5 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl border bg-black/40 text-gray-300 border-white/25 hover:border-white/20 hover:text-white hover:bg-white/5" href="/">Home</Link></li>
+      <li><Link className=" sm:text-white px-5 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl border bg-black/40 text-gray-300 border-white/25 hover:border-white/20 hover:text-white hover:bg-white/5" href="/about">About</Link></li>
+      <li><Link className=" sm:text-white px-5 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl border bg-black/40 text-gray-300 border-white/25 hover:border-white/20 hover:text-white hover:bg-white/5" href="/contact">Contact</Link></li>
     </>
   );
 
   return (
-    <div className="navbar bg-background/60 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div className="navbar bg-gradient-to-r from-gray-300 via-black to-gray-900 backdrop:blur-2xl  sticky top-0 z-50">
       {/* Left side (logo + hamburger) */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
@@ -51,7 +51,7 @@ const Navbar = () => {
         </div>
 
         {/* Logo */}
-        <Link href="/" className="btn btn-ghost normal-case text-lg font-bold">
+        <Link href="/" className="btn btn-ghost normal-case text-2xl  nasalization-font ">
           Programming with Diganta
         </Link>
       </div>
@@ -66,10 +66,10 @@ const Navbar = () => {
       {/* Right side buttons (Tablet & Desktop) */}
       <div className="navbar-end hidden md:flex items-center space-x-2">
         <ModeToggle />
-        <Link className="btn btn-primary" href="/login">
+        <Link className="px-5 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl border bg-black/40 text-gray-300 border-white/25 hover:border-white/20 hover:text-white hover:bg-white/5" href="/login">
           Login
         </Link>
-        <Link className="btn btn-primary" href="/signup">
+        <Link className="px-5 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl border bg-black/40 text-gray-300 border-white/25 hover:border-white/20 hover:text-white hover:bg-white/5" href="/signup">
           Sign Up
         </Link>
       </div>
