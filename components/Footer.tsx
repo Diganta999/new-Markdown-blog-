@@ -78,9 +78,7 @@ export default function MediumFooter() {
         {/* Social Links */}
         <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="text-gray-500 dark:text-gray-400 text-lg">
-              Follow us for updates
-            </div>
+            
             <div className="flex space-x-6">
               {[
                 { icon: "twitter", href: "#" },
