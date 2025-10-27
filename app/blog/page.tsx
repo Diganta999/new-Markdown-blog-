@@ -1,21 +1,18 @@
-"use client"
+"use client";
+import Navbar from "@/components/Navbar";
 import React, { useState } from "react";
 
-// Define Blog type
 interface BlogTypes {
-  slug?: string;
-  content?: string;
+  id: number;
   title: string;
   image: string;
   description: string;
   author: string;
   date: string;
-  id: number;
   category?: string;
   readTime?: string;
 }
 
-// Local blog data with enhanced properties
 const blogs: BlogTypes[] = [
   {
     id: 1,
@@ -35,7 +32,7 @@ const blogs: BlogTypes[] = [
     image:
       "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=80",
     description:
-      "Learn how to travel responsibly and make eco-friendly choices on your next adventure.",
+      "Learn how to travel responsibly and make eco-friendly choices for your next adventure.",
     author: "Jane Smith",
     date: "Oct 12, 2025",
     category: "Sustainability",
@@ -43,11 +40,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 3,
-    title: "Wildlife Photography Tips for Travelers",
+    title: "Wildlife Photography Tips for Every Explorer",
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80",
     description:
-      "Capture the beauty of wildlife ethically with these essential photography techniques.",
+      "Capture stunning wildlife shots ethically with these beginner-friendly photography techniques.",
     author: "Alex Brown",
     date: "Oct 14, 2025",
     category: "Photography",
@@ -55,11 +52,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 4,
-    title: "Minimalist Travel: Less Baggage, More Experience",
+    title: "Minimalist Travel: Experience More with Less",
     image:
       "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80",
     description:
-      "Pack light, live free — discover how minimalist travel can transform your adventures.",
+      "Discover how packing light can help you focus on the beauty of the journey, not the baggage.",
     author: "Sofia Khan",
     date: "Oct 15, 2025",
     category: "Lifestyle",
@@ -67,11 +64,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 5,
-    title: "Forest Conservation and Its Global Importance",
+    title: "Forest Conservation: Protecting Earth's Lungs",
     image:
       "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
     description:
-      "Forests are vital to Earth's ecosystem. Learn why conserving them is more important than ever.",
+      "Forests are essential for our planet. Learn why their preservation matters more than ever.",
     author: "David Lee",
     date: "Oct 16, 2025",
     category: "Conservation",
@@ -79,11 +76,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 6,
-    title: "Eco-Friendly Camping: Leave No Trace Behind",
+    title: "Eco-Friendly Camping: Leave Only Footprints",
     image:
       "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80",
     description:
-      "Explore how to camp sustainably by reducing waste and protecting fragile ecosystems.",
+      "Discover how to camp sustainably and protect nature while enjoying outdoor adventures.",
     author: "Emily Carter",
     date: "Oct 17, 2025",
     category: "Adventure",
@@ -91,11 +88,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 7,
-    title: "Ocean Conservation: Protecting Marine Life",
+    title: "Ocean Conservation: Saving Marine Life Together",
     image:
       "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=800&q=80",
     description:
-      "The ocean is our planet’s heartbeat. Discover practical ways to reduce pollution and protect marine species.",
+      "Learn how simple lifestyle choices can contribute to preserving marine biodiversity.",
     author: "Michael Green",
     date: "Oct 18, 2025",
     category: "Conservation",
@@ -103,11 +100,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 8,
-    title: "Top 5 Eco Lodges Around the World",
+    title: "Top 5 Eco Lodges Around the Globe",
     image:
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80",
     description:
-      "Stay close to nature without harming it. These eco-lodges blend comfort with sustainability.",
+      "These eco-lodges blend luxury with sustainability, offering comfort in harmony with nature.",
     author: "Laura Adams",
     date: "Oct 19, 2025",
     category: "Travel",
@@ -115,11 +112,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 9,
-    title: "How Technology is Transforming Wildlife Protection",
+    title: "Tech Meets Nature: Innovations in Conservation",
     image:
-      "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=800&q=80",
     description:
-      "From drones to AI, learn how modern innovations are helping conservationists safeguard endangered species.",
+      "Explore how AI, drones, and IoT are helping protect endangered species and habitats worldwide.",
     author: "Kevin Brooks",
     date: "Oct 20, 2025",
     category: "Innovation",
@@ -127,11 +124,11 @@ const blogs: BlogTypes[] = [
   },
   {
     id: 10,
-    title: "Volunteering Abroad: Make a Positive Impact",
+    title: "Volunteering Abroad: Make a Real Impact",
     image:
       "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=800&q=80",
     description:
-      "Travel with purpose — explore how volunteering abroad can change both your life and the communities you help.",
+      "Travel with purpose — learn how volunteering abroad can change lives and communities.",
     author: "Rachel Nguyen",
     date: "Oct 21, 2025",
     category: "Community",
@@ -139,236 +136,139 @@ const blogs: BlogTypes[] = [
   },
 ];
 
-
-// Category filter type
-type Category = "All" | "Adventure" | "Sustainability" | "Photography" | "Lifestyle" | "Conservation";
+type Category =
+  | "All"
+  | "Adventure"
+  | "Sustainability"
+  | "Photography"
+  | "Lifestyle"
+  | "Conservation"
+  | "Travel"
+  | "Innovation"
+  | "Community";
 
 const BlogList = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>("All");
-  const [searchTerm, setSearchTerm] = useState("");
   const [favorites, setFavorites] = useState<number[]>([]);
 
-  // Extract unique categories
-  const categories: Category[] = ["All", ...new Set(blogs.map(blog => blog.category).filter(Boolean))] as Category[];
+  const categories: Category[] = [
+    "All",
+    ...new Set(blogs.map((blog) => blog.category).filter(Boolean)),
+  ] as Category[];
 
-  // Filter blogs based on category and search term
-  const filteredBlogs = blogs.filter(blog => {
-    const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory;
-    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         blog.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         blog.author.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredBlogs = blogs.filter(
+    (blog) => selectedCategory === "All" || blog.category === selectedCategory
+  );
 
-  // Toggle favorite
   const toggleFavorite = (id: number) => {
-    setFavorites(prev =>
-      prev.includes(id) ? prev.filter(favId => favId !== id) : [...prev, id]
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id]
     );
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-gray-400 via-black to-gray-500 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
-        <div className="text-center mb-12">
-          <h2 className="text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent">
-              Latest
+    <section className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-[#09090b] dark:via-[#0d0d10] dark:to-[#09090b] transition-colors duration-500">
+      <div className="pt-[40px]">
+        <Navbar />
+      </div>
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 mb-6">
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-green-700 dark:text-green-300 text-sm font-medium">
+              Latest Articles
             </span>
-            {" "}
-            <span className="bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
-              Blogs
-            </span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Discover insightful articles about sustainable travel, eco-adventures, and conservation efforts.
+          </div>
+          <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-green-600 to-gray-900 dark:from-gray-100 dark:via-green-400 dark:to-gray-100 bg-clip-text text-transparent">
+            Explore Our Blogs
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Dive into insightful articles about sustainable travel, eco-adventures, and conservation efforts that matter.
           </p>
         </div>
 
-        {/* Search and Filter Section */}
-        <div className="mb-8 space-y-6 md:space-y-0 md:flex md:items-center md:justify-between">
-          {/* Search Bar */}
-          <div className="relative max-w-md w-full">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            <input
-              type="text"
-              placeholder="Search blogs..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="block w-full pl-12 pr-4 py-4 border border-white/10 rounded-2xl bg-black/40 backdrop-blur-xl text-white placeholder-gray-400 shadow-2xl focus:outline-none focus:ring-2 focus:ring-green-500/50 focus:border-green-500/30 transition-all duration-300 hover:border-white/20"
-            />
-          </div>
-
-          {/* Category Filter */}
+        {/* Category Filter Only */}
+        <div className="mb-16 p-8 rounded-3xl bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 shadow-sm">
           <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map(category => (
+            {categories.map((cat) => (
               <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-5 py-3 rounded-2xl font-medium transition-all duration-300 backdrop-blur-xl border ${
-                  selectedCategory === category
-                    ? "bg-gradient-to-r from-green-500/20 to-emerald-600/20 text-green-400 border-green-500/30 shadow-lg shadow-green-500/20"
-                    : "bg-black/40 text-gray-400 border-white/10 hover:border-white/20 hover:text-white hover:bg-white/5"
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                  selectedCategory === cat
+                    ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/25"
+                    : "bg-white dark:bg-neutral-800 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-green-300 dark:hover:border-green-700 hover:bg-green-50 dark:hover:bg-green-900/20"
                 }`}
               >
-                {category}
+                {cat}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Results Count */}
-        <div className="mb-8 text-gray-400 text-center">
-          Showing <span className="text-white font-semibold">{filteredBlogs.length}</span> of{" "}
-          <span className="text-white font-semibold">{blogs.length}</span> blogs
-        </div>
-
-        {/* Blog Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Blog Cards */}
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
           {filteredBlogs.map((blog) => (
-            <div
+            <article
               key={blog.id}
-              className="group cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-rotate-1"
+              className="group relative bg-white dark:bg-neutral-900 rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-green-300 dark:hover:border-green-700 flex flex-col h-full"
             >
-              <div className="text-white rounded-3xl border border-white/10 bg-gradient-to-br from-[#010101] via-[#090909] to-[#010101] shadow-2xl duration-700 z-10 relative backdrop-blur-xl hover:border-white/25 overflow-hidden hover:shadow-white/5 hover:shadow-3xl">
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-white/10 opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
+              <div className="relative overflow-hidden flex-shrink-0">
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  <div
-                    style={{ animationDelay: "0.5s" }}
-                    className="absolute -bottom-20 -left-20 w-48 h-48 rounded-full bg-gradient-to-tr from-white/10 to-transparent blur-3xl opacity-30 group-hover:opacity-50 transform group-hover:scale-110 transition-all duration-700 animate-bounce"
-                  ></div>
-
-                  <div className="absolute top-10 left-10 w-16 h-16 rounded-full bg-white/5 blur-xl animate-ping"></div>
-                  <div
-                    style={{ animationDelay: "1s" }}
-                    className="absolute bottom-16 right-16 w-12 h-12 rounded-full bg-white/5 blur-lg animate-ping"
-                  ></div>
-
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1.5 text-xs font-semibold rounded-full bg-white/90 dark:bg-neutral-900/90 text-gray-700 dark:text-gray-300 backdrop-blur-sm">
+                    {blog.category}
+                  </span>
                 </div>
 
-                <div className="p-6 relative z-10">
-                  {/* Blog Image */}
-                  <div className="relative mb-6 rounded-2xl overflow-hidden transform group-hover:scale-105 transition-transform duration-500">
-                    <img
-                      src={blog.image}
-                      alt={blog.title}
-                      className="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    
-                    {/* Category Badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-gradient-to-r from-green-500/20 to-emerald-600/20 text-green-400 px-3 py-1 rounded-full text-xs font-semibold border border-green-500/30 backdrop-blur-xl">
-                        {blog.category}
-                      </span>
-                    </div>
+                {/* Favorite Button */}
+                <button
+                  onClick={() => toggleFavorite(blog.id)}
+                  className="absolute top-4 right-4 p-2 rounded-full bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm hover:scale-110 transition-transform duration-300"
+                >
+                  {favorites.includes(blog.id) ? (
+                    <span className="text-red-500 text-lg">❤️</span>
+                  ) : (
+                    <span className="text-gray-400 text-lg">🤍</span>
+                  )}
+                </button>
+              </div>
 
-                    {/* Favorite Button */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleFavorite(blog.id);
-                      }}
-                      className="absolute top-4 right-4 p-2 bg-black/40 rounded-full backdrop-blur-xl border border-white/10 hover:border-white/30 transition-all duration-300"
-                    >
-                      <svg
-                        className={`w-5 h-5 transition duration-300 ${
-                          favorites.includes(blog.id)
-                            ? "text-red-400 fill-current"
-                            : "text-gray-400 hover:text-red-400"
-                        }`}
-                        fill={favorites.includes(blog.id) ? "currentColor" : "none"}
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center justify-between text-sm mb-3">
+                  <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                    <span className="font-medium">{blog.author}</span>
+                    <span>•</span>
+                    <span>{blog.date}</span>
                   </div>
+                  <span className="text-gray-400 dark:text-gray-500">{blog.readTime}</span>
+                </div>
 
-                  {/* Content */}
-                  <div className="space-y-4">
-                    {/* Author and Date */}
-                    <div className="flex items-center justify-between text-sm text-gray-400">
-                      <span className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                        {blog.author}
-                      </span>
-                      <span className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                        {blog.date}
-                      </span>
-                    </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors duration-300 line-clamp-2 leading-tight mb-3">
+                  {blog.title}
+                </h3>
 
-                    {/* Title */}
-                    <h3 className="text-xl font-bold bg-gradient-to-r from-white via-gray-200 to-white bg-clip-text text-transparent group-hover:from-green-400 group-hover:to-emerald-400 transition-all duration-500 line-clamp-2">
-                      {blog.title}
-                    </h3>
+                <p className="text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed mb-6 flex-grow">
+                  {blog.description}
+                </p>
 
-                    {/* Description */}
-                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 group-hover:text-gray-300 transition-colors duration-300">
-                      {blog.description}
-                    </p>
-
-                    {/* Read Time */}
-                    <div className="flex items-center justify-between text-sm text-gray-500">
-                      <span className="flex items-center gap-2 group-hover:text-gray-400 transition-colors duration-300">
-                        <div className="w-1 h-1 bg-current rounded-full"></div>
-                        {blog.readTime}
-                      </span>
-                    </div>
-
-                    {/* Separator */}
-                    <div className="w-full h-0.5 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-full transform group-hover:via-green-500/50 transition-all duration-500"></div>
-
-                    {/* Read More Button */}
-                    <button className="w-full py-3 rounded-xl bg-gradient-to-r from-white/5 to-white/10 border border-white/10 backdrop-blur-xl text-white font-semibold hover:from-green-500/20 hover:to-emerald-600/20 hover:border-green-500/30 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 transform group-hover:scale-105 flex items-center justify-center gap-2">
-                      Read More
-                      <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </button>
-
-                    {/* Animated Dots */}
-                    <div className="flex justify-center space-x-2 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
-                      <div
-                        style={{ animationDelay: "0.1s" }}
-                        className="w-2 h-2 bg-white rounded-full animate-bounce"
-                      ></div>
-                      <div
-                        style={{ animationDelay: "0.2s" }}
-                        className="w-2 h-2 bg-white rounded-full animate-bounce"
-                      ></div>
-                    </div>
-                  </div>
+                <div className="mt-auto">
+                  <button className="w-full py-3 px-4 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 text-green-700 dark:text-green-300 rounded-xl font-semibold hover:from-green-100 hover:to-emerald-100 dark:hover:from-green-800/30 dark:hover:to-emerald-800/30 transition-all duration-300 transform hover:scale-[1.02] border border-green-200 dark:border-green-800">
+                    Read Article
+                  </button>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
-
-        {/* Empty State */}
-        {filteredBlogs.length === 0 && (
-          <div className="text-center py-20">
-            <div className="relative inline-block mb-6">
-              <div className="p-8 rounded-3xl border border-white/10 bg-gradient-to-br from-[#010101] via-[#090909] to-[#010101] shadow-2xl backdrop-blur-xl">
-                <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-3">No blogs found</h3>
-            <p className="text-gray-400 text-lg">Try adjusting your search or filter criteria</p>
-          </div>
-        )}
       </div>
     </section>
   );
