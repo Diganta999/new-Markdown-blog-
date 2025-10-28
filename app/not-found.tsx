@@ -1,5 +1,6 @@
 "use client";
 import FuzzyText from "@/components/FuzzyText";
+import Link from "next/link";
 import React from "react";
 
 const Notfound = () => {
@@ -22,9 +23,9 @@ const Notfound = () => {
 
       <p className="mt-6 text-lg text-gray-400">
         Page not found. Please check the URL or{" "}
-        <a href="/" className="underline hover:text-gray-200">
+        <Link href="/" className="underline hover:text-gray-200">
           go back home
-        </a>
+        </Link>
         .
       </p>
     </div>

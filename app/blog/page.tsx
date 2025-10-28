@@ -1,5 +1,6 @@
 "use client";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 import React, { useState } from "react";
 
 interface BlogTypes {
@@ -215,7 +216,7 @@ const BlogList = () => {
               className="group relative bg-white dark:bg-neutral-900 rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-green-300 dark:hover:border-green-700 flex flex-col h-full"
             >
               <div className="relative overflow-hidden flex-shrink-0">
-                <img
+                <Image
                   src={blog.image}
                   alt={blog.title}
                   className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
