@@ -272,7 +272,7 @@ export default function AnimatedContact() {
             <p className="text-gray-600 dark:text-gray-400 text-lg mb-6">
               We&apos;re active on social media and always happy to chat.
             </p>
-            <div className="flex justify-center space-x-6">
+            <div className="flex justify-center space-x-6 ">
               <motion.a
                 href="#"
                 whileHover={{ scale: 1.2, y: -5 }}

@@ -5,7 +5,7 @@ export default function MediumFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-gray-200 dark:bg-[#0b0b0f] dark:border-gray-800 transition-colors duration-300">
+    <footer className="bg-white border-t border-gray-200 dark:bg-[#0b0b0f] dark:border-gray-800 transition-colors duration-300 mt-6">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-8 lg:space-y-0">

@@ -38,7 +38,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-col items-center justify-center h-[60vh] text-white">
         <h1 className="text-6xl font-bold mb-6">
           <SplitText
-            text="Programmer with Diganta"
+            text="Programming with Diganta"
             className="text-6xl font-bold text-center"
             delay={100}
             duration={0.6}
