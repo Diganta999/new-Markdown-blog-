@@ -26,10 +26,10 @@ export default function AnimatedContact() {
     return () => observer.disconnect();
   }, []);
 
-  const handleInputChange = (e) =>
+  const handleInputChange = (e :any) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault();
     setIsSubmitting(true);
     await new Promise((r) => setTimeout(r, 2000));
